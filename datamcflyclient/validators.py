@@ -17,10 +17,12 @@ __update_operators = ["$inc", "$set", "$unset", "$push", "$pushAll",
 
 
 def check_api_key(api_key):
-    """Check if API key match with the following regular expression:
-    :regexp:`[a-z0-9]{24}`."""
-    return not (__api_key_re.match(api_key) is None)
-
+    if api_key:
+        if not api_key.strip():
+            return True
+    else:
+        return True
+    return False
 
 def check_database_name(name):
     """Check if database name contains invalid characteres."""
