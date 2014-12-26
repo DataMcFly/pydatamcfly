@@ -99,7 +99,7 @@ class DataMcFlyClient(object):
         opener = urllib2.build_opener(self.proxy_handler)
         urllib2.install_opener(opener)
 
-sys.exit( req )
+        sys.exit( req )
 
         try:
             f = opener.open(req)
