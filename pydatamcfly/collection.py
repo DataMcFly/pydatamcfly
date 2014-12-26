@@ -6,39 +6,39 @@ from pydatamcfly import cursor, helpers
 
 class Collection(object):
     """For instance this class, you needs an instance of
-    :class:`pymongolab.database.Database` and the name of your collection.
+    :class:`pydatamcfly.database.Database` and the name of your collection.
 
     Example usage:
 
     .. code-block:: python
 
-       >>> from pymongolab import MongoClient, database, collection
-       >>> con = MongoClient("MongoLabAPIKey")
+       >>> from pydatamcfly import MongoClient, database, collection
+       >>> con = MongoClient("DataMcFlyAPIKey")
        >>> db = database.Database(con, "database")
        >>> collection.Collection(db, "collection")
-       Collection(Database(MongoClient('MongoLabAPIKey', 'v1'),
+       Collection(Database(MongoClient('DataMcFlyAPIKey', 'v1'),
        'database'), 'collection')
 
     Easy usage (Attibute-style access):
 
     .. code-block:: python
 
-       >>> from pymongolab import MongoClient
-       >>> con = MongoClient("MongoLabAPIKey")
+       >>> from pydatamcfly import MongoClient
+       >>> con = MongoClient("DataMcFlyAPIKey")
        >>> db = con.database
        >>> db.collection
-       Collection(Database(MongoClient('MongoLabAPIKey', 'v1'),
+       Collection(Database(MongoClient('DataMcFlyAPIKey', 'v1'),
        'database'), 'collection')
 
     Easy usage (Dictionary-style access):
 
     .. code-block:: python
 
-       >>> from pymongolab import MongoClient
-       >>> con = MongoClient("MongoLabAPIKey")
+       >>> from pydatamcfly import MongoClient
+       >>> con = MongoClient("DataMcFlyAPIKey")
        >>> db = con["database"]
        >>> db["collection"]
-       Collection(Database(MongoClient('MongoLabAPIKey', 'v1'),
+       Collection(Database(MongoClient('DataMcFlyAPIKey', 'v1'),
        'database'), 'collection')
     """
 
@@ -49,14 +49,14 @@ class Collection(object):
 
     @property
     def database(self):
-        """An instance of :class:`pymongolab.database.Database` used for
-        internal calls to MongoLab REST API via :mod:`mongolabclient`.
+        """An instance of :class:`pydatamcfly.database.Database` used for
+        internal calls to DataMcFly REST API via :mod:`datamcflyclient`.
         """
         return self.__database
 
     @property
     def full_name(self):
-        """The full name of this :class:`pymongolab.collection.Collection`.
+        """The full name of this :class:`pydatamcfly.collection.Collection`.
 
         The full name is of the form `database_name.collection_name`.
         """
@@ -81,7 +81,7 @@ class Collection(object):
     def find(self, spec_or_id=None, fields={}, skip=0, limit=0, **kwargs):
         """Query the database.
 
-        Returns an instance of :class:`pymongolab.cursor.Cursor` with the
+        Returns an instance of :class:`pydatamcfly.cursor.Cursor` with the
         result set.
 
         :Parameters:
@@ -98,10 +98,10 @@ class Collection(object):
 
         .. code-block:: python
 
-           >>> from pymongolab import MongoClient
-           >>> con = MongoClient("MongoLabAPIKey")
+           >>> from pydatamcfly import MongoClient
+           >>> con = MongoClient("DataMcFlyAPIKey")
            >>> con.database.collection.find()
-           <pymongolab.cursor.Cursor object at 0x1972490>
+           <pydatamcfly.cursor.Cursor object at 0x1972490>
            >>> list(con.database.collection.find())
            [{u'_id': ObjectId('50243d38e4b00c3b3e75fc94'), u'foo': u'bar',
            u'tld': u'com'}, {u'_id': ObjectId('50004d646cf431171ed53846'),
@@ -188,8 +188,8 @@ class Collection(object):
 
         .. code-block:: python
 
-           >>> from pymongolab import MongoClient
-           >>> con = MongoClient("MongoLabAPIKey")
+           >>> from pydatamcfly import MongoClient
+           >>> con = MongoClient("DataMcFlyAPIKey")
            >>> con.database.collection.find_one()
            {u'_id': ObjectId('50243d38e4b00c3b3e75fc94'), u'foo': u'bar',
            u'tld': u'com'}
@@ -212,8 +212,8 @@ class Collection(object):
 
         .. code-block:: python
 
-           >>> from pymongolab import MongoClient
-           >>> con = MongoClient("MongoLabAPIKey")
+           >>> from pydatamcfly import MongoClient
+           >>> con = MongoClient("DataMcFlyAPIKey")
            >>> con.database.collection.count()
            22
         """
@@ -230,8 +230,8 @@ class Collection(object):
 
         .. code-block:: python
 
-           >>> from pymongolab import MongoClient
-           >>> con = MongoClient("MongoLabAPIKey")
+           >>> from pydatamcfly import MongoClient
+           >>> con = MongoClient("DataMcFlyAPIKey")
            >>> con.database.collection.distinct("title")
            [u'first title', u'second title', u'my title', u'your title']
 
@@ -250,8 +250,8 @@ class Collection(object):
            >>> doc = {"foo": "bar"}
            >>> docs = [{"foo": "bar"}, {"foo": "bar"}]
 
-           >>> from pymongolab import MongoClient
-           >>> con = MongoClient("MongoLabAPIKey")
+           >>> from pydatamcfly import MongoClient
+           >>> con = MongoClient("DataMcFlyAPIKey")
            >>> #Inserting a document
            ... con.database.collection.insert(doc)
            {u'foo': u'bar', u'_id': ObjectId('50242e46e4b0926293fd4d7c')}
@@ -274,8 +274,8 @@ class Collection(object):
 
         .. code-block:: python
 
-           >>> from pymongolab import MongoClient
-           >>> con = MongoClient("MongoLabAPIKey")
+           >>> from pydatamcfly import MongoClient
+           >>> con = MongoClient("DataMcFlyAPIKey")
            >>> list(con.database.collection.find())
            [{u'_id': ObjectId('50243d38e4b00c3b3e75fc94'), u'foo': u'bar',
            u'tld': u'org'}]
@@ -309,8 +309,8 @@ class Collection(object):
 
         .. code-block:: python
 
-           >>> from pymongolab import MongoClient
-           >>> con = MongoClient("MongoLabAPIKey")
+           >>> from pydatamcfly import MongoClient
+           >>> con = MongoClient("DataMcFlyAPIKey")
            >>> con.database.collection.reindex()
            {u'ok': 1.0, u'indexes': [{u'ns': u'mydb.mycoll', u'name': u'_id_',
            u'key': {u'_id': 1}}], u'msg': u'indexes dropped for collection',
@@ -329,8 +329,8 @@ class Collection(object):
 
         .. code-block:: python
 
-           >>> from pymongolab import MongoClient
-           >>> con = MongoClient("MongoLabAPIKey")
+           >>> from pydatamcfly import MongoClient
+           >>> con = MongoClient("DataMcFlyAPIKey")
            >>> #Deleting a document
            ... con.database.collection.remove({"foo": "bar"})
            2

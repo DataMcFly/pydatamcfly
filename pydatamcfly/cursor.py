@@ -2,7 +2,7 @@
 
 
 class Cursor(object):
-    """A cursor / iterator over MongoLab REST API query results.
+    """A cursor / iterator over DataMcFly REST API query results.
     """
 
     def __init__(self, collection, spec_or_id=None, fields={}, skip=0, limit=0,

@@ -5,34 +5,34 @@ from pydatamcfly import collection
 
 class Database(object):
     """For instance this class, you needs an instance of
-    :class:`pydatamcfly.mongo_client.MongoClient` and the name of your database.
+    :class:`pydatamcfly.datamcfly_client.DataMcFlyClient` and the name of your database.
 
     Example usage:
 
     .. code-block:: python
 
-       >>> from pydatamcfly import MongoClient, database
-       >>> con = MongoClient("datamcflyAPIKey")
+       >>> from pydatamcfly import DataMcFlyClient, database
+       >>> con = DataMcFlyClient("datamcflyAPIKey")
        >>> database.Database(con, "database")
-       Database(MongoClient('datamcflyAPIKey', 'v1'), 'database')
+       Database(DataMcFlyClient('datamcflyAPIKey', 'v1'), 'database')
 
     Easy usage (Attibute-style access):
 
     .. code-block:: python
 
-       >>> from pydatamcfly import MongoClient
-       >>> con = MongoClient("datamcflyAPIKey")
+       >>> from pydatamcfly import DataMcFlyClient
+       >>> con = DataMcFlyClient("datamcflyAPIKey")
        >>> con.database
-       Database(MongoClient('datamcflyAPIKey', 'v1'), 'database')
+       Database(DataMcFlyClient('datamcflyAPIKey', 'v1'), 'database')
 
     Easy usage (Dictionary-style access):
 
     .. code-block:: python
 
-       >>> from pydatamcfly import MongoClient
-       >>> con = MongoClient("datamcflyAPIKey")
+       >>> from pydatamcfly import DataMcFlyClient
+       >>> con = DataMcFlyClient("datamcflyAPIKey")
        >>> con["database"]
-       Database(MongoClient('datamcflyAPIKey', 'v1'), 'database')
+       Database(DataMcFlyClient('datamcflyAPIKey', 'v1'), 'database')
     """
 
     def __init__(self, connection, name):
@@ -41,7 +41,7 @@ class Database(object):
 
     @property
     def connection(self):
-        """An instance of :class:`pydatamcfly.mongo_client.MongoClient` used for
+        """An instance of :class:`pydatamcfly.datamcfly_client.DataMcFlyClient` used for
         internal calls to datamcfly REST API via :mod:`datamcflyclient`.
         """
         return self.__connection
@@ -63,11 +63,11 @@ class Database(object):
 
         .. code-block:: python
 
-           >>> from pydatamcfly import MongoClient
-           >>> con = MongoClient("datamcflyAPIKey")
+           >>> from pydatamcfly import DataMcFlyClient
+           >>> con = DataMcFlyClient("datamcflyAPIKey")
            >>> db = con.database
            >>> db.collection
-           Collection(Database(MongoClient('datamcflyAPIKey', 'v1'),
+           Collection(Database(DataMcFlyClient('datamcflyAPIKey', 'v1'),
            'database'), 'collection')
         """
         return collection.Collection(self, name)
@@ -79,11 +79,11 @@ class Database(object):
 
         .. code-block:: python
 
-           >>> from pydatamcfly import MongoClient
-           >>> con = MongoClient("datamcflyAPIKey")
+           >>> from pydatamcfly import DataMcFlyClient
+           >>> con = DataMcFlyClient("datamcflyAPIKey")
            >>> db = con["database"]
            >>> db["collection"]
-           Collection(Database(MongoClient('datamcflyAPIKey', 'v1'),
+           Collection(Database(DataMcFlyClient('datamcflyAPIKey', 'v1'),
            'database'), 'collection')
         """
         return self.__getattr__(name)
@@ -95,8 +95,8 @@ class Database(object):
 
         .. code-block:: python
 
-           >>> from pydatamcfly import MongoClient
-           >>> con = MongoClient("datamcflyAPIKey")
+           >>> from pydatamcfly import DataMcFlyClient
+           >>> con = DataMcFlyClient("datamcflyAPIKey")
            >>> con.database.collection_names()
            [u'collection', u'users', u'issues']
         """
@@ -106,7 +106,7 @@ class Database(object):
         """Execute a database-collection level command via
         :func:`datamcflyclient.client.datamcflyClient.run_command`. The supported
         methods are listed on datamcfly REST API Documentation:
-        https://support.datamcfly.com/entries/20433053-rest-api-for-mongodb
+        https://support.datamcfly.com/entries/20433053-rest-api-for-datamcflydb
 
         .. warning:: all of commands on datamcfly REST API are case-sensitive.
 
@@ -129,8 +129,8 @@ class Database(object):
 
         .. code-block:: python
 
-           >>> from pydatamcfly import MongoClient
-           >>> con = MongoClient("datamcflyAPIKey")
+           >>> from pydatamcfly import DataMcFlyClient
+           >>> con = DataMcFlyClient("datamcflyAPIKey")
            >>> con.database.command("dbStats")
            {u'storageSize': 57344, u'serverUsed': u'dsXXXXXX-b.datamcfly.com',
            u'ok': 1.0, u'avgObjSize': 101.88235294117646, u'db': u'dbname',
@@ -180,8 +180,8 @@ class Database(object):
 
         .. code-block:: python
 
-           >>> from pydatamcfly import MongoClient
-           >>> con = MongoClient("datamcflyAPIKey")
+           >>> from pydatamcfly import DataMcFlyClient
+           >>> con = DataMcFlyClient("datamcflyAPIKey")
            >>> con.database.last_status()
            {'ok': 1.0, 'err': None, 'connectionId': 951470, 'n': 0}
 

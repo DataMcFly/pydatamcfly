@@ -1,6 +1,6 @@
 # -*- coding: utf-8 *-*
-"""HTTP requests implementation for `MongoLab REST API`_
+"""HTTP requests implementation for `DataMcFly REST API`_
 
-.. _MongoLab REST API: http://support.mongolab.com/entries/20433053-rest-api-for-mongodb"""
+.. _DataMcFly REST API: http://datamcfly.com/docs/"""
 
-from mongolabclient.client import MongoLabClient
+from datamcflyclient.client import DataMcFlyClient

@@ -33,8 +33,8 @@ class DataMcFlySettings(object):
     """Instance class to get url and operations detail depending the version
     REST API.
 
-    All of this data are specified on MongoLab Support website:
-    http://support.mongolab.com/entries/20433053-rest-api-for-mongodb
+    All of this data are specified on DataMcFly Support website:
+    http://datamcfly.com/docs/
 
     .. note::
        The ``version`` parameter is optional, because it is planed for using in

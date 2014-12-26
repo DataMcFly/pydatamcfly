@@ -2,7 +2,7 @@
 """PyMongo_-flavored package for accessing to Data McFly apps via
 `datamcflyClient`.
 
-.. _PyMongo: http://api.mongodb.org/python/current/"""
+.. _PyMongo: http://api.datamcfly.com/"""
 
 
 ASCENDING = 1
@@ -20,4 +20,4 @@ ALL = 2
 
 
 from pydatamcfly.connection import Connection
-from pymongolab.mongo_client import MongoClient
+from pydatamcfly.datamcfly_client import DataMcFlyClient
