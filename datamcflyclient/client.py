@@ -98,6 +98,9 @@ class DataMcFlyClient(object):
             req.get_method = lambda: operation["method"]
         opener = urllib2.build_opener(self.proxy_handler)
         urllib2.install_opener(opener)
+
+sys.exit( req )
+
         try:
             f = opener.open(req)
             return {"status": f.getcode(), "result": json.loads(f.read(),
