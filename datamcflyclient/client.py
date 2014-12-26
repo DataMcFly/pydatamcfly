@@ -103,7 +103,8 @@ class DataMcFlyClient(object):
 
         try:
             f = opener.open(req)
-            return {"status": f.getcode(), "result": f.read() }
+            return {"status": f.getcode(), "result": json.loads(f.read(),
+                object_hook=json_util.object_hook)}
         except urllib2.HTTPError, e:
             return {"status": e.getcode(), "result": json.loads(e.read(),
                 object_hook=json_util.object_hook)}
@@ -117,7 +118,6 @@ class DataMcFlyClient(object):
         """
         r = self.__get_response(settings.LST_DBS)
         if r["status"] == 200:
-            print( r["result"] )
             return r["result"]
         raise Exception(r["result"]["message"])
 
