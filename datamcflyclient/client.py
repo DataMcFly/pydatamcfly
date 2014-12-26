@@ -5,6 +5,7 @@ except ImportError:
     import json
 import urllib
 import urllib2
+import sys
 from datamcflyclient import settings, validators, errors, json_util
 
 
