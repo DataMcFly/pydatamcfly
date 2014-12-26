@@ -75,11 +75,12 @@ class DataMcFlyClient(object):
         operation = self.settings.operations[operation]
         url = self.__get_full_url(operation, slug_params)
 
-        sys.exit( url )
-
         if operation["method"] == "GET":
             kwargs["apiKey"] = self.api_key
             params = urllib.urlencode(kwargs)
+
+            sys.exit( url + "?%s" % params )
+
             req = urllib2.Request(url + "?%s" % params)
         elif operation["method"] == "POST":
             params = kwargs.get("data", {})
