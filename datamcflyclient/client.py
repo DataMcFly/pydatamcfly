@@ -46,8 +46,6 @@ class DataMcFlyClient(object):
         if not validators.check_api_key(self.api_key):
             raise errors.BadAPIKeyFormat(self.api_key)
         r = self.__get_response(settings.VAL_API)
-        print("Validate API KEY returned " )
-        print( r["status"] )
         return (r["status"] == 200)
 
     @property
@@ -146,6 +144,7 @@ class DataMcFlyClient(object):
         r = self.__get_response(settings.LST_DOCS,
             {"db": database, "col": collection}, **kwargs)
         if r["status"] == 200:
+            print( r )
             return r["result"]
         raise Exception(r["result"]["message"])
 
