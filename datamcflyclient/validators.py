@@ -3,7 +3,9 @@ from datamcflyclient import errors
 import re
 
 
-__api_key_re = re.compile(r"^[a-z0-9]{24}|[a-zA-Z0-9_-]{32}$")
+__api_key_re2 = re.compile(r"^[a-z0-9]{24}|[a-zA-Z0-9_-]{32}$")
+
+__api_key_re = re.compile(r"^[a-f0-9]{8}-?[a-f0-9]{4}-?4[a-f0-9]{3}-?[89ab][a-f0-9]{3}-?[a-f0-9]{12}\Z")
 
 __param_types = {"spec": dict, "count": bool, "fields": dict, "find_one": bool,
     "sort": dict, "skip": int, "limit": int}
@@ -17,12 +19,10 @@ __update_operators = ["$inc", "$set", "$unset", "$push", "$pushAll",
 
 
 def check_api_key(api_key):
-    if api_key:
-        if not api_key.strip():
-            return True
-    else:
-        return True
-    return False
+    """Check if API key match with the following regular expression:
+    :regexp:`[a-z0-9]{24}`."""
+    return not (__api_key_re.match(api_key) is None)
+
 
 def check_database_name(name):
     """Check if database name contains invalid characteres."""
