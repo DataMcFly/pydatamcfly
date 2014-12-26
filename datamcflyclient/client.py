@@ -74,6 +74,9 @@ class DataMcFlyClient(object):
         """
         operation = self.settings.operations[operation]
         url = self.__get_full_url(operation, slug_params)
+
+        sys.exit( url )
+
         if operation["method"] == "GET":
             kwargs["apiKey"] = self.api_key
             params = urllib.urlencode(kwargs)
@@ -99,8 +102,6 @@ class DataMcFlyClient(object):
             req.get_method = lambda: operation["method"]
         opener = urllib2.build_opener(self.proxy_handler)
         urllib2.install_opener(opener)
-
-        sys.exit( req )
 
         try:
             f = opener.open(req)
