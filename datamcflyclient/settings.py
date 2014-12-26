@@ -47,7 +47,7 @@ class DataMcFlySettings(object):
         VERSION_1: {
             VAL_API: {
                 "method": "GET",
-                "slug": ""},
+                "slug": "validate_key"},
             LST_DBS: {
                 "method": "GET",
                 "slug": "apps"},
