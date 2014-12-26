@@ -41,7 +41,7 @@ class DataMcFlySettings(object):
        future versions of REST API.
     """
 
-    __BASE_URLS = {VERSION_1: "https://api.datamcfly.com/}
+    __BASE_URLS = {VERSION_1: "https://api.datamcfly.com/"}
 
     __OPERATIONS = {
         VERSION_1: {
