@@ -11,6 +11,7 @@ DataMcFly databases via the `DataMcFly REST API`_ using a similar syntax to PyDa
 Useful in cases where network barriers (firewalls, etc.)  prevent use of the
 standard DataMcFlyDB driver.
 
+''' python 
 >>> from pydatamcfly import DataMcFlyClient
 >>> con = DataMcFlyClient("DataMcFlyAPIKey")
 >>> db = con.database
@@ -18,6 +19,7 @@ standard DataMcFlyDB driver.
 >>> list(col)
 [{u'_id': ObjectId('50243d38e4b00c3b3e75fc94'), u'foo': u'bar', u'tld': u'com'},
 {u'_id': ObjectId('50004d646cf431171ed53846'), u'foo': u'bar', u'tld': u'org'}]
+'''
 
 Installation
 ============
